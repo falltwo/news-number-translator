@@ -1,17 +1,46 @@
 {
-  "population": null,
-  "populationSource": "TODO:內政部戶政司最新人口數",
+  "population": 23213251,
+  "populationSource": "https://www.ris.gov.tw/app/portal/346",
+  "populationAsOf": "2026 年 9 月底",
   "items": [
     {
+      "id": "cash-handout",
+      "title": "普發現金每人 2 萬元",
+      "amount": 20000,
+      "unit": "TWD",
+      "status": "草案（逕付二讀）",
+      "perCapita": false,
+      "note": "立法院 10/16 表決逕付二讀，還沒三讀，金額和發放時程都可能再變。",
+      "source": "https://www.cna.com.tw/news/aipl/202610160138.aspx",
+      "checkedAt": "2026-10-19"
+    },
+    {
       "id": "keelung-mrt",
-      "title": "基隆捷運總經費核定",
+      "title": "基隆捷運總經費審議通過",
       "amount": 69689000000,
       "unit": "TWD",
-      "status": "已通過",
+      "status": "工程會審議通過",
       "perCapita": true,
       "targetYear": 2033,
-      "source": "TODO:填原始報導或行政院公告網址",
-      "checkedAt": null
+      "note": "行政院公共工程委員會審議通過，目標 2033 年通車。",
+      "source": "https://www.cna.com.tw/news/aloc/202610130224.aspx",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "elderly-nhi",
+      "title": "65 歲以上、稅率未達 20% 的長者免繳健保費",
+      "status": "立法院三讀通過",
+      "note": "《老人福利法》第 22 條修正，10/16 三讀。報導沒有確切的總經費，所以這張不換算。",
+      "source": "https://news.pts.org.tw/article/831752",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "id": "typhoon",
+      "title": "薔琵颱風",
+      "status": "預報",
+      "note": "路徑每天在變，這張卡不做換算，請直接看氣象署最新颱風消息。",
+      "source": "https://www.cwa.gov.tw/V8/C/P/Typhoon/TY_NEWS.html",
+      "checkedAt": "2026-10-19"
     }
   ]
 }

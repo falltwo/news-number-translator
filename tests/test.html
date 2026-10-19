@@ -1,9 +1,25 @@
 <!doctype html>
 <meta charset="utf-8">
-<title>換算公式測試</title>
-<p>打開 DevTools Console 看結果。</p>
+<title>換算公式測試｜新聞數字翻譯機</title>
+<p>測試結果會顯示在下方，DevTools Console 也會看到。</p>
+<ul id="results"></ul>
 <script src="../assets/js/app.js"></script>
 <script>
-  // TODO(組員):每條換算公式至少一個 console.assert,例如
-  // console.assert(monthsOfSalary(20000, 20000) === 1, 'monthsOfSalary');
+  const cases = [
+    ['monthsOfSalary', monthsOfSalary(20000, 20000) === 1],
+    ['perPerson', perPerson(100000, 10) === 10000],
+    ['bowlsOfRice', bowlsOfRice(20000, 40) === 500],
+    ['ageAtYear', ageAtYear(20, 2033, 2026) === 27],
+    ['ageAtYear 預設今年', ageAtYear(20, new Date().getFullYear()) === 20]
+  ];
+  const list = document.getElementById('results');
+  cases.forEach(([name, ok]) => {
+    console.assert(ok, name);
+    const li = document.createElement('li');
+    li.textContent = `${ok ? '✅' : '❌'} ${name}`;
+    list.appendChild(li);
+  });
+  const passed = cases.filter(([, ok]) => ok).length;
+  document.title = `${passed}/${cases.length} 通過｜換算公式測試`;
+  console.log(`公式測試完成：${passed} / ${cases.length}`);
 </script>

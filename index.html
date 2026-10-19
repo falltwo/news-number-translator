@@ -3,16 +3,84 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>新聞數字翻譯機</title>
+  <meta name="description" content="把新聞裡看不懂的大數字，翻譯成你的月薪、滷肉飯與未來年齡。">
+  <title>新聞數字翻譯機｜這個數字，換成你的生活是什麼？</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <main>
-    <h1>新聞數字翻譯機</h1>
-    <p>建置中。規劃見 <a href="https://github.com/falltwo/news-number-translator/blob/main/docs/規劃書.md">規劃書</a>。</p>
-    <!-- TODO(組員):輸入列(月薪/年齡/單價)與新聞卡片容器,見規劃書第 4、5 點 -->
-    <section id="cards"></section>
-  </main>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="新聞數字翻譯機首頁">
+        <span class="brand-mark" aria-hidden="true"><span>NT</span><i></i></span>
+        <span class="brand-copy"><strong>新聞數字</strong><em>翻譯機</em></span>
+      </a>
+      <div class="header-meta"><span class="issue-dot"></span> ISSUE 01 / 2026.10</div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-kicker"><span class="line"></span> NEWS, IN YOUR SCALE</div>
+        <h1 id="page-title">大數字看不懂？<br><mark>換成你的生活。</mark></h1>
+        <p class="hero-lede">新聞裡的億、兆，離你太遠。輸入幾個日常數字，讓每一則新聞回答：<strong>這跟我有什麼關係？</strong></p>
+        <div class="hero-note"><span>↳</span> 所有換算只在你的瀏覽器裡進行，不會被送出或儲存。</div>
+      </section>
+
+      <section class="scale-panel" aria-labelledby="scale-title">
+        <div class="section-label"><span>01</span><span class="label-rule"></span><span>先放進你的尺度</span></div>
+        <div class="scale-intro">
+          <h2 id="scale-title">你的生活參數</h2>
+          <p>改變數字，下面的翻譯會即時更新。</p>
+        </div>
+        <form id="settings-form" class="settings-grid">
+          <label class="field field-salary">
+            <span class="field-label">我的月薪 <small>NT$</small></span>
+            <span class="input-wrap"><input id="salary" name="salary" type="number" min="1" step="500" value="29500" inputmode="numeric"><span>元 / 月</span></span>
+            <span class="field-hint">預設 = 2026 年最低工資（勞動部公告）</span>
+          </label>
+          <label class="field">
+            <span class="field-label">我現在 <small>AGE</small></span>
+            <span class="input-wrap"><input id="age" name="age" type="number" min="0" max="120" step="1" value="20" inputmode="numeric"><span>歲</span></span>
+          </label>
+          <label class="field">
+            <span class="field-label">一碗滷肉飯 <small>FOOD</small></span>
+            <span class="input-wrap"><input id="meal" name="meal" type="number" min="1" step="5" value="40" inputmode="numeric"><span>元</span></span>
+          </label>
+        </form>
+      </section>
+
+      <section class="news-section" aria-labelledby="news-title">
+        <div class="section-heading">
+          <div class="section-label"><span>02</span><span class="label-rule"></span><span>把新聞翻譯給你聽</span></div>
+          <div class="heading-row"><h2 id="news-title">今天的數字</h2><span id="item-count" class="count-badge">讀取中</span></div>
+        </div>
+        <div id="data-notice" class="data-notice" hidden></div>
+        <div id="cards" class="cards" aria-live="polite"></div>
+      </section>
+
+      <section class="how-section" aria-labelledby="how-title">
+        <div class="section-label"><span>03</span><span class="label-rule"></span><span>打開計算紙</span></div>
+        <div class="how-layout">
+          <div><h2 id="how-title">每一個答案，<br><mark>都有算式。</mark></h2><p>我們把公式攤開來。不藏在黑盒子裡，也不假裝這就是你真的要付的錢。</p></div>
+          <div class="formula-list">
+            <div><b>月薪</b><span>金額 ÷ 月薪</span></div>
+            <div><b>每人</b><span>總額 ÷ 台灣人口</span></div>
+            <div><b>幾碗</b><span>金額 ÷ 滷肉飯單價</span></div>
+            <div><b>那時幾歲</b><span>現在年齡 +（目標年 − 今年）</span></div>
+            <p id="population-info" class="population-info"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div><strong>新聞數字翻譯機</strong><span>一個讓數字靠近生活的開源小工具。</span><p class="footer-disclaimer">這裡的換算都是比喻尺度，幫你感受數字大小；「攤到每人」不是每個人實際要付的錢。</p></div>
+      <div class="footer-links"><a href="https://github.com/falltwo/news-number-translator/blob/main/docs/%E8%A6%8F%E5%8A%83%E6%9B%B8.md" target="_blank" rel="noreferrer">看規劃書 ↗</a><span id="last-checked">資料尚未核對</span></div>
+    </footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="assets/js/app.js"></script>
 </body>
 </html>
